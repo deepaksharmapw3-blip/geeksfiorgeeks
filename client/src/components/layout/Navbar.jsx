@@ -1,40 +1,23 @@
 import { NavLink } from "react-router-dom";
 
+const links = ["about", "team", "events", "resources", "gallery", "blogs", "contact"];
+
 export default function Navbar() {
   return (
-    <header
-      style={{
-        background: "#0f172a",
-        color: "white",
-        padding: "18px 40px",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          maxWidth: "1200px",
-          margin: "auto",
-        }}
-      >
-        <h2>TechSphere</h2>
+    <header className="navbar">
+      <NavLink to="/" className="brand">
+        <span className="brand-mark">G</span>
+        <span>GFG Campus Body GCECT</span>
+      </NavLink>
 
-        <nav
-          style={{
-            display: "flex",
-            gap: "25px",
-          }}
-        >
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/about">About</NavLink>
-          <NavLink to="/events">Events</NavLink>
-          <NavLink to="/resources">Resources</NavLink>
-          <NavLink to="/gallery">Gallery</NavLink>
-          <NavLink to="/blogs">Blogs</NavLink>
-          <NavLink to="/contact">Contact</NavLink>
-        </nav>
-      </div>
+      <nav className="nav-links">
+        <NavLink to="/">Home</NavLink>
+        {links.map((link) => (
+          <NavLink key={link} to={`/${link}`}>
+            {link.charAt(0).toUpperCase() + link.slice(1)}
+          </NavLink>
+        ))}
+      </nav>
     </header>
   );
 }
